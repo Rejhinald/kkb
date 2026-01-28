@@ -15,12 +15,25 @@ const buttonVariants = cva(
           "bg-secondary-background text-foreground border-2 border-border shadow-shadow hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none",
         reverse:
           "text-main-foreground bg-main border-2 border-border hover:translate-x-reverseBoxShadowX hover:translate-y-reverseBoxShadowY hover:shadow-shadow",
+        // Colorful neobrutalism variants
+        yellow:
+          "bg-accent-yellow text-black border-2 border-border shadow-shadow hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none",
+        pink:
+          "bg-accent-pink text-black border-2 border-border shadow-shadow hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none",
+        green:
+          "bg-accent-green text-black border-2 border-border shadow-shadow hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none",
+        orange:
+          "bg-accent-orange text-black border-2 border-border shadow-shadow hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none",
+        purple:
+          "bg-accent-purple text-white border-2 border-border shadow-shadow hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none",
+        danger:
+          "bg-red-500 text-white border-2 border-border shadow-shadow hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 px-3",
-        lg: "h-11 px-8",
-        icon: "size-10",
+        default: "h-11 sm:h-12 px-4 sm:px-5 py-2.5 text-sm",
+        sm: "h-9 sm:h-10 px-3 sm:px-4 text-sm",
+        lg: "h-12 sm:h-14 px-6 sm:px-8 text-base",
+        icon: "size-11 sm:size-12",
       },
     },
     defaultVariants: {
