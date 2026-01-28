@@ -11,26 +11,26 @@ interface BillHeaderProps {
 
 export function BillHeader({ title, onTitleChange }: BillHeaderProps) {
   return (
-    <header className="space-y-2">
+    <header className="space-y-3">
       <div className="flex items-center justify-between">
         <div className="w-8" /> {/* Spacer for centering */}
-        <div className="text-center flex flex-col items-center">
+        <div className="text-center flex flex-col items-center pb-[40px]">
           {/* Light mode logo */}
           <Image
             src="/logo_light.svg"
             alt="KKB Logo"
-            width={280}
-            height={140}
-            className="w-[180px] sm:w-[220px] h-auto dark:hidden"
+            width={400}
+            height={200}
+            className="w-[300px] sm:w-[340px] h-auto dark:hidden"
             priority
           />
           {/* Dark mode logo */}
           <Image
             src="/logo_dark.svg"
             alt="KKB Logo"
-            width={280}
-            height={140}
-            className="w-[180px] sm:w-[220px] h-auto hidden dark:block"
+            width={400}
+            height={200}
+            className="w-[300px] sm:w-[340px] h-auto hidden dark:block"
             priority
           />
         </div>

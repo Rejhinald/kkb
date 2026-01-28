@@ -95,8 +95,8 @@ export default function Home() {
   const actualSubtotal = getActualSubtotal(state)
 
   return (
-    <div className="min-h-dvh bg-background px-3 py-3 pb-6 sm:px-4 sm:py-4 sm:pb-8 overflow-y-auto">
-      <div className="mx-auto max-w-md space-y-3 sm:space-y-4">
+    <div className="min-h-dvh bg-background px-3 py-3 pb-6 sm:px-4 sm:py-4 sm:pb-8 overflow-y-auto overflow-x-hidden">
+      <div className="mx-auto max-w-md space-y-4 sm:space-y-5">
         {/* Header */}
         <BillHeader title={state.title} onTitleChange={setTitle} />
 
