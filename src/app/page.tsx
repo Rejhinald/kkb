@@ -82,11 +82,11 @@ export default function Home() {
   // Show loading skeleton while hydrating from localStorage
   if (!isLoaded) {
     return (
-      <div className="min-h-screen bg-background px-3 py-4 sm:px-4 sm:py-5">
-        <div className="mx-auto max-w-md space-y-4 sm:space-y-5">
-          <div className="h-28 sm:h-32 animate-pulse rounded-base border-2 border-border bg-secondary-background" />
-          <div className="h-10 sm:h-12 animate-pulse rounded-base border-2 border-border bg-secondary-background" />
-          <div className="h-40 sm:h-48 animate-pulse rounded-base border-2 border-border bg-secondary-background" />
+      <div className="min-h-dvh bg-background px-3 py-3 sm:px-4 sm:py-4">
+        <div className="mx-auto max-w-md space-y-3">
+          <div className="h-20 sm:h-24 animate-pulse rounded-base border-2 border-border bg-secondary-background" />
+          <div className="h-10 animate-pulse rounded-base border-2 border-border bg-secondary-background" />
+          <div className="h-32 sm:h-40 animate-pulse rounded-base border-2 border-border bg-secondary-background" />
         </div>
       </div>
     )
@@ -95,8 +95,8 @@ export default function Home() {
   const actualSubtotal = getActualSubtotal(state)
 
   return (
-    <div className="min-h-screen bg-background px-4 py-6 pb-24 sm:px-6 sm:py-8 sm:pb-28">
-      <div className="mx-auto max-w-md space-y-5 sm:space-y-6">
+    <div className="min-h-dvh bg-background px-3 py-3 pb-6 sm:px-4 sm:py-4 sm:pb-8 overflow-y-auto">
+      <div className="mx-auto max-w-md space-y-3 sm:space-y-4">
         {/* Header */}
         <BillHeader title={state.title} onTitleChange={setTitle} />
 
@@ -106,7 +106,7 @@ export default function Home() {
         {/* Equal Split: Total Amount Input */}
         {state.splitMode === "equal" && (
           <Card>
-            <CardContent className="pt-6 space-y-4">
+            <CardContent className="pt-4 space-y-3">
               <div className="flex items-center justify-between">
                 <label className="text-sm font-base">Total Bill Amount</label>
                 <button
@@ -127,7 +127,7 @@ export default function Home() {
                       d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
                     />
                   </svg>
-                  {showCalculator ? "Hide" : "Calculator"}
+                  {showCalculator ? "Hide" : "Calc"}
                 </button>
               </div>
 
@@ -141,12 +141,12 @@ export default function Home() {
                   placeholder="0.00"
                   value={state.subtotal > 0 ? state.subtotal.toString() : ""}
                   onChange={(e) => setSubtotal(parsePesoInput(e.target.value))}
-                  className="pl-8 text-2xl font-heading"
+                  className="pl-8 text-xl font-heading"
                 />
               </div>
 
               {/* Quick amount buttons */}
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5">
                 {QUICK_AMOUNTS.map((amount, index) => {
                   const colors = ["yellow", "pink", "green", "orange"] as const
                   return (
@@ -156,7 +156,7 @@ export default function Home() {
                       variant={colors[index % colors.length]}
                       size="sm"
                       onClick={() => setSubtotal(state.subtotal + amount)}
-                      className="text-xs"
+                      className="text-xs px-2"
                     >
                       +₱{amount.toLocaleString()}
                     </Button>
@@ -173,7 +173,7 @@ export default function Home() {
               )}
 
               {state.people.length > 0 && state.subtotal > 0 && (
-                <p className="text-sm text-foreground/70">
+                <p className="text-xs text-foreground/70">
                   {formatPeso(state.subtotal / state.people.length)} per person
                 </p>
               )}
@@ -184,10 +184,10 @@ export default function Home() {
         {/* Individual Split: Show subtotal from items */}
         {state.splitMode === "individual" && actualSubtotal > 0 && (
           <Card>
-            <CardContent className="pt-6">
+            <CardContent className="pt-4">
               <div className="flex justify-between items-center">
                 <span className="text-sm font-base">Subtotal from items</span>
-                <span className="text-xl font-heading">
+                <span className="text-lg font-heading">
                   {formatPeso(actualSubtotal)}
                 </span>
               </div>
@@ -243,15 +243,17 @@ export default function Home() {
             variant={activeTab === "current" ? "green" : "neutral"}
             onClick={() => setActiveTab("current")}
             className="flex-1"
+            size="sm"
           >
-            Current Bill
+            Current
           </Button>
           <Button
             variant={activeTab === "history" ? "purple" : "neutral"}
             onClick={() => setActiveTab("history")}
             className="flex-1"
+            size="sm"
           >
-            Past Bills ({history.length})
+            History ({history.length})
           </Button>
         </div>
 
@@ -269,9 +271,9 @@ export default function Home() {
         )}
 
         {/* Footer */}
-        <footer className="text-center pt-4">
-          <p className="text-xs text-foreground/40">
-            KKB - Kanya-Kanyang Bayad | Arwin Miclat © 2026
+        <footer className="text-center pt-2 pb-2">
+          <p className="text-[10px] text-foreground/40">
+            KKB - Kanya-Kanyang Bayad | Rejhinald © 2026
           </p>
         </footer>
       </div>

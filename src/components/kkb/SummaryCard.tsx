@@ -32,10 +32,10 @@ export function SummaryCard({ summary }: SummaryCardProps) {
 
   return (
     <Card className="bg-main">
-      <CardHeader className="pb-3">
-        <CardTitle className="text-main-foreground text-xl">Summary</CardTitle>
+      <CardHeader className="pb-1">
+        <CardTitle className="text-main-foreground text-lg">Summary</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-3 text-main-foreground">
+      <CardContent className="space-y-2 text-main-foreground text-sm">
         <div className="flex justify-between">
           <span>Subtotal</span>
           <span className="font-heading">{formatPeso(summary.subtotal)}</span>
@@ -48,15 +48,15 @@ export function SummaryCard({ summary }: SummaryCardProps) {
             </span>
           </div>
         )}
-        <div className="flex justify-between border-t-2 border-border pt-3">
-          <span className="font-heading text-lg">TOTAL</span>
-          <span className="font-heading text-2xl">
+        <div className="flex justify-between border-t-2 border-border pt-2">
+          <span className="font-heading">TOTAL</span>
+          <span className="font-heading text-xl">
             {formatPeso(summary.grandTotal)}
           </span>
         </div>
 
         {summary.shares.length > 0 && (
-          <div className="border-t-2 border-border pt-3 text-sm space-y-2">
+          <div className="border-t-2 border-border pt-2 text-xs space-y-1">
             <div className="flex justify-between">
               <span>
                 Paid: {summary.paidCount}/{summary.shares.length}
@@ -74,22 +74,22 @@ export function SummaryCard({ summary }: SummaryCardProps) {
 
         {/* Bill Payers Section */}
         {billPayers.length > 0 && (
-          <div className="border-t-2 border-border pt-3 mt-2 space-y-2">
-            <p className="font-heading text-sm">
-              Bill Paid By ({billPayers.length} {billPayers.length === 1 ? "person" : "people"})
+          <div className="border-t-2 border-border pt-2 space-y-1.5">
+            <p className="font-heading text-xs">
+              Paid By ({billPayers.length})
             </p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5">
               {billPayers.map((payer) => (
                 <div
                   key={payer.personId}
-                  className="text-xs rounded-base bg-secondary-background text-foreground px-2 py-1 border-2 border-border"
+                  className="text-[10px] rounded-base bg-secondary-background text-foreground px-1.5 py-0.5 border-2 border-border"
                 >
                   {payer.name}: {formatPeso(payer.amountGiven)}
                 </div>
               ))}
             </div>
-            <p className="text-xs text-main-foreground/80">
-              Total collected: {formatPeso(totalPaid)}
+            <p className="text-[10px] text-main-foreground/80">
+              Collected: {formatPeso(totalPaid)}
               {totalPaid < summary.grandTotal && (
                 <span className="text-red-300">
                   {" "}(₱{(summary.grandTotal - totalPaid).toFixed(2)} short)
@@ -106,14 +106,14 @@ export function SummaryCard({ summary }: SummaryCardProps) {
 
         {/* Change Summary Section */}
         {(peopleWithChange.length > 0 || peopleWhoOwe.length > 0) && (
-          <div className="border-t-2 border-border pt-3 mt-2 space-y-2">
-            <p className="font-heading text-sm">Change Summary</p>
+          <div className="border-t-2 border-border pt-2 space-y-1.5">
+            <p className="font-heading text-xs">Change</p>
 
             {/* People who should receive change */}
             {peopleWithChange.map((person) => (
               <div
                 key={person.personId}
-                className="flex justify-between text-sm rounded-base bg-green-400 text-black px-2 py-1 border-2 border-border"
+                className="flex justify-between text-xs rounded-base bg-green-400 text-black px-2 py-0.5 border-2 border-border"
               >
                 <span>Give {person.name}</span>
                 <span className="font-heading">{formatPeso(person.change)}</span>
@@ -124,7 +124,7 @@ export function SummaryCard({ summary }: SummaryCardProps) {
             {peopleWhoOwe.map((person) => (
               <div
                 key={person.personId}
-                className="flex justify-between text-sm rounded-base bg-red-400 text-black px-2 py-1 border-2 border-border"
+                className="flex justify-between text-xs rounded-base bg-red-400 text-black px-2 py-0.5 border-2 border-border"
               >
                 <span>{person.name} owes</span>
                 <span className="font-heading">
@@ -135,8 +135,8 @@ export function SummaryCard({ summary }: SummaryCardProps) {
 
             {/* Net summary */}
             {peopleWithChange.length > 0 && peopleWhoOwe.length > 0 && (
-              <div className="text-xs text-main-foreground/80 pt-1">
-                Total to give back: {formatPeso(totalChange)} | To collect:{" "}
+              <div className="text-[10px] text-main-foreground/80">
+                Give back: {formatPeso(totalChange)} | Collect:{" "}
                 {formatPeso(totalOwed)}
               </div>
             )}

@@ -30,15 +30,15 @@ export function PersonList({
   onSetAmountGiven,
 }: PersonListProps) {
   return (
-    <div className="space-y-5">
-      <h2 className="text-xl sm:text-2xl font-heading">People</h2>
+    <div className="space-y-3">
+      <h2 className="text-lg sm:text-xl font-heading">People</h2>
 
       {people.length === 0 ? (
-        <p className="text-foreground/60 text-base">
+        <p className="text-foreground/60 text-sm">
           Add people to split the bill with
         </p>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-2.5">
           {people.map((person) => {
             const share = shares.find((s) => s.personId === person.id)
             return (

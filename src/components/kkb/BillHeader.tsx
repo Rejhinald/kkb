@@ -11,29 +11,28 @@ interface BillHeaderProps {
 
 export function BillHeader({ title, onTitleChange }: BillHeaderProps) {
   return (
-    <header className="space-y-4 sm:space-y-5">
+    <header className="space-y-2">
       <div className="flex items-center justify-between">
         <div className="w-8" /> {/* Spacer for centering */}
-        <div className="text-center flex flex-col items-center pb-5">
+        <div className="text-center flex flex-col items-center">
           {/* Light mode logo */}
           <Image
             src="/logo_light.svg"
             alt="KKB Logo"
-            width={320}
-            height={160}
-            className="w-[260px] sm:w-[300px] md:w-[340px] h-auto dark:hidden"
+            width={280}
+            height={140}
+            className="w-[180px] sm:w-[220px] h-auto dark:hidden"
             priority
           />
           {/* Dark mode logo */}
           <Image
             src="/logo_dark.svg"
             alt="KKB Logo"
-            width={320}
-            height={160}
-            className="w-[260px] sm:w-[300px] md:w-[340px] h-auto hidden dark:block"
+            width={280}
+            height={140}
+            className="w-[180px] sm:w-[220px] h-auto hidden dark:block"
             priority
           />
-          <p className="text-sm sm:text-base font-heading text-foreground/80 mt-2 sm:mt-3"></p>
         </div>
         <ThemeToggle />
       </div>
@@ -42,7 +41,7 @@ export function BillHeader({ title, onTitleChange }: BillHeaderProps) {
         placeholder="Bill name (e.g., Lunch at Jollibee)"
         value={title}
         onChange={(e) => onTitleChange(e.target.value)}
-        className="text-center font-heading text-sm sm:text-base"
+        className="text-center font-heading text-sm"
       />
     </header>
   )

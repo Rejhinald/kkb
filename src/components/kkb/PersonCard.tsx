@@ -43,10 +43,10 @@ export function PersonCard({
 
   return (
     <Card>
-      <CardHeader className="pb-2 sm:pb-3">
+      <CardHeader className="pb-1">
         <div className="flex items-center justify-between">
-          <CardTitle className="text-lg sm:text-xl">{person.name}</CardTitle>
-          <div className="flex items-center gap-2 sm:gap-3">
+          <CardTitle className="text-base sm:text-lg">{person.name}</CardTitle>
+          <div className="flex items-center gap-2">
             <PaymentStatusBadge status={person.paymentStatus} />
             <Button
               variant="neutral"
@@ -71,10 +71,10 @@ export function PersonCard({
           </div>
         </div>
       </CardHeader>
-      <CardContent className="space-y-4 sm:space-y-5">
+      <CardContent className="space-y-2.5">
         {/* Amount Given Input - First */}
-        <div className="space-y-2">
-          <label className="text-sm text-foreground/70">Amount given</label>
+        <div className="space-y-1">
+          <label className="text-xs text-foreground/70">Amount given</label>
           <div className="relative">
             <span className="absolute left-2 top-1/2 -translate-y-1/2 text-sm">
               ₱
@@ -104,8 +104,8 @@ export function PersonCard({
 
         {/* Equal mode: Personal order input - Second */}
         {splitMode === "equal" && (
-          <div className="space-y-2">
-            <label className="text-sm text-foreground/70">
+          <div className="space-y-1">
+            <label className="text-xs text-foreground/70">
               Personal order (not split)
             </label>
             <div className="relative">
@@ -167,40 +167,40 @@ export function PersonCard({
         )}
 
         {/* Amount breakdown */}
-        <div className="space-y-2 border-t-2 border-border pt-3">
+        <div className="space-y-1 border-t-2 border-border pt-2">
           {splitMode === "equal" && personalAmount > 0 && (
             <>
-              <div className="flex justify-between text-sm">
+              <div className="flex justify-between text-xs">
                 <span>Shared portion</span>
                 <span>{formatPeso(sharedPortion)}</span>
               </div>
-              <div className="flex justify-between text-sm">
+              <div className="flex justify-between text-xs">
                 <span>Personal order</span>
                 <span>{formatPeso(personalAmount)}</span>
               </div>
             </>
           )}
           {splitMode === "equal" && personalAmount === 0 && (
-            <div className="flex justify-between text-sm">
+            <div className="flex justify-between text-xs">
               <span>Share</span>
               <span>{formatPeso(baseAmount)}</span>
             </div>
           )}
           {splitMode === "individual" && (
-            <div className="flex justify-between text-sm">
+            <div className="flex justify-between text-xs">
               <span>Items</span>
               <span>{formatPeso(baseAmount)}</span>
             </div>
           )}
           {feeAmount > 0 && (
-            <div className="flex justify-between text-sm text-foreground/70">
+            <div className="flex justify-between text-xs text-foreground/70">
               <span>+ Fees</span>
               <span>{formatPeso(feeAmount)}</span>
             </div>
           )}
-          <div className="flex justify-between font-heading">
+          <div className="flex justify-between font-heading text-sm">
             <span>Total</span>
-            <span className="text-lg">{formatPeso(totalAmount)}</span>
+            <span>{formatPeso(totalAmount)}</span>
           </div>
         </div>
 
@@ -208,9 +208,10 @@ export function PersonCard({
         <Button
           variant={person.paymentStatus === "paid" ? "green" : "yellow"}
           className="w-full"
+          size="sm"
           onClick={onTogglePayment}
         >
-          {person.paymentStatus === "paid" ? "Mark as Unpaid" : "Mark as Paid"}
+          {person.paymentStatus === "paid" ? "Unpaid" : "Mark Paid"}
         </Button>
       </CardContent>
     </Card>
